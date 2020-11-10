@@ -16,7 +16,7 @@ const theme = {
 function App() {
   return (
     <Grommet theme={theme} full>
-      <Box fill align="center" justify="center">
+      <Box fill align="center" justify="center" background="dark-2">
         <MapBox />
       </Box>
     </Grommet>

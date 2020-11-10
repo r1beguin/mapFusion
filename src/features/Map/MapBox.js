@@ -13,7 +13,7 @@ import { exportComponentAsPNG } from "react-component-export-image";
 import ReactLeafletSearch from "react-leaflet-search";
 
 const MapBox = () => {
-  const [data, setData] = React.useState([]);
+  
   const [tile, setTile] = React.useState(3);
   const [composing, setComposing] = React.useState(50);
   const [maps] = React.useState([
@@ -37,13 +37,6 @@ const MapBox = () => {
   const size = React.useContext(ResponsiveContext);
   const componentRef = React.useRef();
 
-  React.useEffect(() => {
-    fetch(
-      "https://opendata.paris.fr/api/records/1.0/search/?dataset=referentiel-archeologique-de-paris&q=&facet=code_postal&facet=nature_operation&facet=responsable_operation&facet=date_operation&facet=prehistoire&facet=protohistoire&facet=antiquite&facet=moyen_age&facet=temps_modernes&facet=epoque_contemporaine"
-    )
-      .then((response) => response.json())
-      .then((data) => setData(data.records));
-  }, []);
 
   return (
     <>
@@ -250,15 +243,7 @@ const MapBox = () => {
               openSearchOnLoad={false}
             ></ReactLeafletSearch>
 
-            {data.map((item) => (
-              <Marker position={item.fields.geo_point_2d}>
-                <Popup>
-                  <Box margin="small" overflow="scroll" height="small">
-                    <Text size="small">{item.fields.synthese}</Text>
-                  </Box>
-                </Popup>
-              </Marker>
-            ))}
+            
           </Map>
         </Box>
       </Box>
